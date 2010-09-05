@@ -1,0 +1,4 @@
+# dist file for MathGL
+
+darcs      /extensions/MathGL            http://openengine.dk/code/extensions/MathGL
+darcs-dev  /extensions/MathGL            fh.daimi.au.dk:/users/cgd/code/extensions/MathGL
