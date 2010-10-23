@@ -2,3 +2,5 @@
 
 darcs      /extensions/MathGL            http://openengine.dk/code/extensions/MathGL
 darcs-dev  /extensions/MathGL            fh.daimi.au.dk:/users/cgd/code/extensions/MathGL
+
+dist /extensions/TexUtils/TexUtils.dist http://openengine.dk/code/extensions/TexUtils/TexUtils.dist
