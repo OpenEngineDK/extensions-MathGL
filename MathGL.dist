@@ -4,3 +4,6 @@ darcs      /extensions/MathGL            http://openengine.dk/code/extensions/Ma
 darcs-dev  /extensions/MathGL            fh.daimi.au.dk:/users/cgd/code/extensions/MathGL
 
 dist /extensions/TexUtils/TexUtils.dist http://openengine.dk/code/extensions/TexUtils/TexUtils.dist
+
+darwin /libraries http://openengine.dk/data/libraries/mathgl-osx64.tgz
+

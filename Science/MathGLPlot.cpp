@@ -14,8 +14,6 @@ MathGLPlot::MathGLPlot(int w, int h) {
     memcpy(te->GetData(), graph.GetBits(), w*h*3);
     tex = UCharTexture2DPtr(te);
     tex->ReverseVertecally();
-    graph.WritePNG("gr.png");
-    
 }
 
 ITexture2DPtr MathGLPlot::GetTexture() {
