@@ -12,13 +12,17 @@
 #define _OE_MATH_G_L_PLOT_H_
 
 #include <mgl/mgl_zb.h>
+#include <vector>
 
 #include <Resources/Texture2D.h>
 
 namespace OpenEngine {
 namespace Science {
 
-    using namespace Resources;
+class MathGLData;
+
+using namespace Resources;
+using namespace std;
 
 /**
  * Short description.
@@ -27,9 +31,19 @@ namespace Science {
  */
 class MathGLPlot {
 private:
+    int width;
+    int height;
+    //std::list<MathGLData*> datasets;
+    //mglGraphZB* graph;
     UCharTexture2DPtr tex;
-public:
+    vector<float> xv;
+    vector<float> yv;
+public:   
     MathGLPlot(int w, int h);
+
+    void AddPoint(float t, float y);
+    void Redraw();
+    //void AddDataSet(MathGLData* dataset);
 
     ITexture2DPtr GetTexture();
 };
