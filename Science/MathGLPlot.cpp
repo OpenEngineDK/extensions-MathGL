@@ -1,6 +1,7 @@
 #include "MathGLPlot.h"
 
 #include <Science/IDataSet.h>
+#include <Science/IDataSet1D.h>
 #include <Science/IDataSet2D.h>
 #include <Logging/Logger.h>
 #include <vector>
@@ -30,39 +31,65 @@ void MathGLPlot::AddPoint(float t, float y) {
 }
 
 
-void MathGLPlot::Redraw() {
-    mglGraphZB* graph = new mglGraphZB(width,height);
+void MathGLPlot::Draw1D(mglGraphZB* graph,IDataSet1D* data) {
+    mglData y;
+
+    if (data) {
+        yv = data->GetYData();
+    }
+
+    if (yv.size() < 1)
+        return;
+    
+    
+    y.Set(yv);
+
+    //graph->XRange(x);
+    //graph->Label('x', data->GetXName().c_str());
+    graph->Label('y', data->GetYName().c_str());
+
+    graph->YRange(y);
+    graph->Axis("xy");
+    graph->Box();
+    graph->Plot(y);
+}
+
+void MathGLPlot::Draw2D(mglGraphZB* graph,IDataSet2D* data) {
     mglData x;
     mglData y;
 
-    if (dataset) {
-        xv = dataset->GetXData();
-        yv = dataset->GetYData();
+    if (data) {
+        xv = data->GetXData();
+        yv = data->GetYData();
     }
 
     if (xv.size() < 1)
         return;
     
-    // for (int i=0;i<100;i++) {
-    //     float y = sin(float(i/10.0));
-    //     data.push_back(y);
-    //     //data2.push_back(i);
-    // }
     
     y.Set(yv);
     x.Set(xv);
 
-    //y.Modify("sin(x*pi)");
-    //logger.info << "arg" << logger.end;
-
     graph->XRange(x);
-    //graph->Min.x = 0;
-    //graph->Max.x = 100;
-    //graph->RecalcBorder();
+    graph->Label('x', data->GetXName().c_str());
+    graph->Label('y', data->GetYName().c_str());
+
     graph->YRange(y);
     graph->Axis("xy");
     graph->Box();
     graph->Plot(x,y);
+}
+
+void MathGLPlot::Redraw() {
+    mglGraphZB* graph = new mglGraphZB(width,height);
+
+    if (IDataSet1D *data = dynamic_cast<IDataSet1D*>(dataset)) {
+        Draw1D(graph,data);
+    }
+    else if (IDataSet2D *data = dynamic_cast<IDataSet2D*>(dataset)) {
+        Draw2D(graph,data);
+    }
+
     
     memcpy(tex->GetData(), graph->GetBits(), width*height*3);
 
@@ -72,7 +99,7 @@ void MathGLPlot::Redraw() {
     delete graph;
 }
 
-void MathGLPlot::SetData(IDataSet2D* data) {
+void MathGLPlot::SetData(IDataSet* data) {
     dataset = data;
 }
 

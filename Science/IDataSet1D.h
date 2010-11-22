@@ -1,4 +1,4 @@
-// Interface for a 2D floating point data set.
+// Interface for a 1D floating point data set.
 // -------------------------------------------------------------------
 // Copyright (C) 2007 OpenEngine.dk (See AUTHORS)
 //
@@ -8,8 +8,8 @@
 //--------------------------------------------------------------------
 
 
-#ifndef _OE_INTERFACE_DATA_SET_2D_H_
-#define _OE_INTERFACE_DATA_SET_2D_H_
+#ifndef _OE_INTERFACE_DATA_SET_1D_H_
+#define _OE_INTERFACE_DATA_SET_1D_H_
 
 #include <vector>
 #include <string>
@@ -21,23 +21,21 @@ namespace Science {
 
 
 /**
- * Interface for a 2D floating point data set.
+ * Interface for a 1D floating point data set.
  * This data set can be plotted using MathGLPlot.
  * @see MathGLPlot
- * @class IDataSet2D IDataSet2D.h ons/MathGL/Science/IDataSet2D.h
+ * @class IDataSet1D IDataSet1D.h ons/MathGL/Science/IDataSet1D.h
  */
-class IDataSet2D : public IDataSet {
+class IDataSet1D : public IDataSet {
 public:   
-    virtual ~IDataSet2D() {};
+    virtual ~IDataSet1D() {};
 
-    virtual std::string GetXName() = 0;
     virtual std::string GetYName() = 0;
 
-    virtual std::vector<float> GetXData() = 0;
     virtual std::vector<float> GetYData() = 0;
 };
 
 } // NS Science
 } // NS OpenEngine
 
-#endif // _OE_INTERFACE_DATA_SET_2D_H_
+#endif // _OE_INTERFACE_DATA_SET_1D_H_
