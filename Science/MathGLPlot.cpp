@@ -1,6 +1,7 @@
 #include "MathGLPlot.h"
 
 #include <Science/IDataSet.h>
+#include <Science/IDataSet2D.h>
 #include <Logging/Logger.h>
 #include <vector>
 
@@ -9,7 +10,7 @@ namespace Science {
 
 
     
-MathGLPlot::MathGLPlot(int w, int h) : width(w), height(h) {
+MathGLPlot::MathGLPlot(int w, int h) : width(w), height(h), dataset(NULL) {
     //graph = new mglGraphZB(w,h);
     UCharTexture2D *te = new UCharTexture2D(w,h,3);
     tex = UCharTexture2DPtr(te);
@@ -33,6 +34,11 @@ void MathGLPlot::Redraw() {
     mglGraphZB* graph = new mglGraphZB(width,height);
     mglData x;
     mglData y;
+
+    if (dataset) {
+        xv = dataset->GetXData();
+        yv = dataset->GetYData();
+    }
 
     if (xv.size() < 1)
         return;
@@ -65,6 +71,11 @@ void MathGLPlot::Redraw() {
     tex->ChangedEvent().Notify(arg);
     delete graph;
 }
+
+void MathGLPlot::SetData(IDataSet2D* data) {
+    dataset = data;
+}
+
 
 ITexture2DPtr MathGLPlot::GetTexture() {
     return tex;

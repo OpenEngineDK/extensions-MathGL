@@ -20,6 +20,7 @@ namespace OpenEngine {
 namespace Science {
 
 class MathGLData;
+class IDataSet2D;
 
 using namespace Resources;
 using namespace std;
@@ -38,6 +39,7 @@ private:
     UCharTexture2DPtr tex;
     vector<float> xv;
     vector<float> yv;
+    IDataSet2D* dataset;
 public:   
     MathGLPlot(int w, int h);
 
@@ -46,6 +48,8 @@ public:
     //void AddDataSet(MathGLData* dataset);
 
     ITexture2DPtr GetTexture();
+
+    void SetData(IDataSet2D* data);
 };
 
 } // NS Science
