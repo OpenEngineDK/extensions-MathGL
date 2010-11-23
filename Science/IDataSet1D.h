@@ -14,6 +14,7 @@
 #include <vector>
 #include <string>
 
+
 #include "IDataSet.h"
 
 namespace OpenEngine {
@@ -31,6 +32,7 @@ public:
     virtual ~IDataSet1D() {};
 
     virtual std::string GetYName() = 0;
+    virtual std::pair<float,float> GetXRange() =0;
 
     virtual std::vector<float> GetYData() = 0;
 };

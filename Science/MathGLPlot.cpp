@@ -48,6 +48,12 @@ void MathGLPlot::Draw1D(mglGraphZB* graph,IDataSet1D* data) {
     //graph->Label('x', data->GetXName().c_str());
     graph->Label('y', data->GetYName().c_str());
 
+    pair<float,float> xrange = data->GetXRange();
+
+    graph->Min.x = xrange.first;
+    graph->Max.x = xrange.second;
+    graph->RecalcBorder();
+
     graph->YRange(y);
     graph->Axis("xy");
     graph->Box();
@@ -82,6 +88,7 @@ void MathGLPlot::Draw2D(mglGraphZB* graph,IDataSet2D* data) {
 
 void MathGLPlot::Redraw() {
     mglGraphZB* graph = new mglGraphZB(width,height);
+    graph->SetFontSize(8.0);
 
     if (IDataSet1D *data = dynamic_cast<IDataSet1D*>(dataset)) {
         Draw1D(graph,data);
