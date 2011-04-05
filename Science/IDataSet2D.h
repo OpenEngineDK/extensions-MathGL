@@ -35,6 +35,9 @@ public:
 
     virtual std::vector<float> GetXData() = 0;
     virtual std::vector<float> GetYData() = 0;
+
+    virtual float GetMax() = 0;
+    virtual float GetMin() = 0;
 };
 
 } // NS Science

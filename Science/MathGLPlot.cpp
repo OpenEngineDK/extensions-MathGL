@@ -76,11 +76,12 @@ void MathGLPlot::Draw2D(mglGraphZB* graph,IDataSet2D* data) {
     y.Set(yv);
     x.Set(xv);
 
+    graph->SetRanges(0.0,0.0, data->GetMin(), data->GetMax(), 0.0, 0.0);
     graph->XRange(x);
     graph->Label('x', data->GetXName().c_str());
     graph->Label('y', data->GetYName().c_str());
 
-    graph->YRange(y);
+    // graph->YRange(y);
     graph->Axis("xy");
     graph->Box();
     graph->Plot(x,y);
@@ -88,7 +89,7 @@ void MathGLPlot::Draw2D(mglGraphZB* graph,IDataSet2D* data) {
 
 void MathGLPlot::Redraw() {
     mglGraphZB* graph = new mglGraphZB(width,height);
-    graph->SetFontSize(8.0);
+    //graph->SetFontSize(8.0);
 
     if (IDataSet1D *data = dynamic_cast<IDataSet1D*>(dataset)) {
         Draw1D(graph,data);
