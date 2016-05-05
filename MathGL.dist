@@ -1,9 +1,9 @@
 # dist file for MathGL
 
-darcs      /extensions/MathGL            http://openengine.dk/code/extensions/MathGL
-darcs-dev  /extensions/MathGL            fh.daimi.au.dk:/users/cgd/code/extensions/MathGL
+git      /extensions/MathGL            https://github.com/OpenEngineDK/extensions-MathGL.git
+git-dev  /extensions/MathGL            git@github.com:OpenEngineDK/extensions-MathGL.git
 
-dist /extensions/TexUtils/TexUtils.dist http://openengine.dk/code/extensions/TexUtils/TexUtils.dist
+dist /extensions/TexUtils/TexUtils.dist https://raw.githubusercontent.com/OpenEngineDK/extensions-TexUtils/master/TexUtils.dist
 
 darwin /libraries http://openengine.dk/data/libraries/mathgl-osx64.tgz
 
